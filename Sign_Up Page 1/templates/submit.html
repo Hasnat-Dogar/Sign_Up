@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+</head>
+
+<body>
+    <header>
+        <div>Sign Up</div>
+        <div>
+            <a href="{{url_for('signup')}}">&larr;Back</a>
+            <a href="{{url_for('home')}}">Home</a>
+        </div>
+    </header>
+
+    <main>
+        <h1>Congratulations {% if username %} {{ username }}{% endif %}!</h1>
+        <p>
+            You have Successfully Signed_Up to our site
+            <br>
+            Do you want to go on the Menu Page?
+        </p>
+        <a href="{{url_for('menu')}}">Menu!</a>
+    </main>
+
+    <footer>
+        Copyright &copy; 2026 | All Rights reserved
+        <a href="{{url_for('about')}}">About_Us</a>
+        <a href="{{url_for('contact')}}">Contact_Us</a>
+    </footer>
+</body>
+
+</html>

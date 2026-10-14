@@ -1,0 +1,296 @@
+/* ==========================================================================
+   1. GLOBAL SYSTEM SETTINGS & BACKGROUND (FILE PATH POSITION)
+   ========================================================================== */
+@import url('https://googleapis.com');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100px;
+}
+
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #f3f4f6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+    /* ------------------------------------------------------------------
+       🚀 BACKGROUND WAREHOUSE WALLPAPER HOUSING:
+       ------------------------------------------------------------------ */
+    background: url('/static/BMW\ pic.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ==========================================================================
+   2. HEADER NAVIGATION & LEFT-TO-RIGHT DYNAMIC UNDERLINE
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: flex-start;  /* Pulls nav links tight to the left edge */
+    align-items: center;
+    padding: 2rem 4%; 
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    gap: 2.5rem;                  
+}
+
+header > div:first-child {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+header div a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 2.5rem;         
+    margin-left: 0 !important;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+header div a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ffb703;
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+header div a:hover,
+header div a:focus,
+header div a:active {
+    color: #ffffff;
+}
+
+header div a:hover::after,
+header div a:focus::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. CLEAN VERTICAL LEFT-STACK TEXT LAYOUT (NO BOX BACKGROUND)
+   ========================================================================== */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;       
+    align-items: flex-start;      
+    justify-content: flex-start;  
+    padding: 10rem 4% 4rem 4%; 
+    z-index: 1;
+}
+
+/* Get Started Title Page Heading */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;       
+    background: linear-gradient(135deg, #ffffff 60%, #9ca3af);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: left;
+}
+
+/* Completely transparent description text panel adjustments */
+main > div:not([class]), 
+main > p {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 320px; 
+    box-shadow: none !important;
+    margin-bottom: 1.5rem;       
+}
+
+main p {
+    color: #cbd5e1; 
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: left;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Ensures clear legibility */
+}
+
+/* ==========================================================================
+   4. FIXED MODERN SIDE-BY-SIDE BUTTON CONTAINER (FLEXBOX DESIGN)
+   ========================================================================== */
+/* The parent wrapper container for your home action links */
+main div.button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 320px;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+main a {
+    text-decoration: none;
+    flex: 1; /* Automatically builds matching half-widths for side-by-side elements */
+    max-width: 140px;
+}
+
+button[type="submit"], 
+main button[type="button"],
+main a button {
+    width: 100%;
+    background: #ffb703;
+    color: #0d0e11;
+    border: none;
+    padding: 0.65rem 1rem;       
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.78rem;          
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    white-space: nowrap;          
+}
+
+button[type="submit"]:hover,
+main button[type="button"]:hover,
+main a button:hover {
+    background: #fb8500;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(251, 133, 0, 0.4);
+}
+
+/* ==========================================================================
+   5. PREMIUM FORM CARDS (SIGN UP / SIGN IN HOUSINGS UNCHANGED)
+   ========================================================================== */
+form {
+    /* background: rgba(18, 20, 26, 0.85);  */
+    background: #282a2b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 100%;
+    max-width: 340px; 
+    padding: 2rem; 
+    border-radius: 14px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+form h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.1rem;
+}
+
+form p {
+    color: #9ca3af;
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+    text-align: left;
+    line-height: 1.5;
+    text-shadow: none;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+form label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ca3af;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 0.8rem 1rem; 
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #ffb703;
+    box-shadow: 0 0 0 3px rgba(255, 183, 3, 0.25);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+form label a {
+    color: #ffb703;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    text-transform: none;
+    letter-spacing: 0;
+    display: inline;
+}
+
+form label a:hover {
+    color: #fb8500;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. FOOTER ALIGNMENT PARAMETERS
+   ========================================================================== */
+footer {
+    padding: 2rem;
+    /* background: rgba(8, 9, 11, 0.95); */
+    /* border-top: 1px solid rgba(255, 255, 255, 0.08); */
+    text-align: center;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-top: auto;
+}
+
+footer a {
+    color: #f3f4f6;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: #ffb703;
+}
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change_Pass</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+</head>
+<body>
+    <header>
+        <div>Change Password</div>
+    </header>
+    <main>
+        <form action="/change_pass" method="POST"
+        onsubmit= "if(password.value !== c_password.value){err.style.display='block';return false;}" >
+            <div> <h1>Change your Password</h1> </div>
+            <div> <p> Enter your Old Password </p> </div>
+            <div>
+                <label for="user_name">Email or User_Name</label>
+                <input type="text" name="login" placeholder="Enter your Email" required>
+            </div>
+            <div>
+                <label for="old_pass" >Old Password</label>
+                <input id="old_pass" type="password" name="old_pass" placeholder="Enter your Old Password" >
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Select a Strong Password"required>
+            </div>
+            <div>
+                <label for="c_password">Confirm Password</label>
+                <input id="c_password" name="confirm_password" type="password" placeholder="Confirm Your Password" required>
+                <span id="err" style="display: none; color: #ff4d4d; font-size: 14px;">
+                ⚠️ Enter the Same Password!
+                </span>
+            </div>
+            <div> <button type="submit"> Change Password </button> </div>
+        </form>   
+    </main>
+    <footer>
+      Copyright &copy; 2026 | All Rights reserved
+      <a href="{{url_for('about')}}">About_Us</a>
+      <a href="{{url_for('contact')}}">Contact_Us</a>
+    </footer>
+</body>
+</html>

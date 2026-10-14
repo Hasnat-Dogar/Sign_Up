@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+  </head>
+
+  <body>
+    <header>
+      <div>Home</div>
+    </header>
+
+    <main>
+      <div>
+        <h1>Get Started,</h1>
+      </div>
+      <p>
+        Hello,
+        <br />
+        Welcome to our site.
+        <br />
+        This is the Home page of my Sign_Up Project
+        <br />
+        Do you want to Sign Up?
+      </p>
+      <div class="button-container">
+        <a href="/signup"><button>Sign Up</button></a>
+        <a href="/sign_in"><button>Login</button></a>
+      </div>
+    </main>
+
+    <footer>
+      Copyright &copy; 2026 | All Rights reserved
+      <a href="{{url_for('about')}}">About_Us</a>
+      <a href="{{url_for('contact')}}">Contact_Us</a>
+    </footer>
+  </body>
+</html>

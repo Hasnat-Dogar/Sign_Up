@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+</head>
+<body>
+    <header>
+      <h1>Signify</h1>
+      <div>  <a href="{{url_for('home')}}">Home</a> <a href="{{url_for('about')}}">About</a> <a href="{{url_for('contact')}}">Contact</a> <a href="/sign_in">Sign In</a> <a href="{{url_for('signup')}}">Sign Up</a> </div>
+    </header>
+    <Main>
+        <h1>Congratulations,</h1>
+        <br>
+        <p>You have Successfully Sign-In to our site</p>
+        <a href="{{url_for('change_pass')}}">Change Password</a>
+        <a action="/signout" href="{{url_for('signout')}}">Signout</a>
+    </Main>
+    <footer>
+      <p>Subscribe to get 15% off on our Premium Plans</p>
+      <span> <input type="email" pattern=".+@gmail\.com" placeholder="Enter Your Email" required> <button type="submit">Subscribe</button> </span>
+      <div>
+      <a href="{{url_for('about')}}">About Us</a>
+      <a href="{{url_for('contact')}}">Contact Us</a>
+      </div>
+      <span>Copyright &copy; 2026 | All Rights reserved</span>
+      <span>Privacy Poicy</span>
+      <span>Terms of Service</span>
+      <span>Copyright &copy; Law</span>
+    </footer>
+</body>
+</html>

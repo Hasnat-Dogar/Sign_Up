@@ -24,10 +24,18 @@ body {
     /* ------------------------------------------------------------------
        🚀 BACKGROUND WAREHOUSE WALLPAPER HOUSING:
        ------------------------------------------------------------------ */
-    background: url('Sign_Up Pagee 1/static/BMW\ pic.jpg') no-repeat center center fixed;
+    /* background: url('Sign_Up Pagee 1/static/BMW\ pic.jpg') no-repeat center center fixed;
     background-size: cover;
     /* background-color: gray;
-    background-size: cover; */
+    background-size: cover; */ */
+   body {
+  background-image: url("BMW pic.jpg"); /* spaces encoded as %20, or use "BMW pic.jpg" in quotes */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed; /* optional: makes background fixed on scroll */
+  background-color: #000; /* fallback while image loads */
+}
 }
 
 /* ==========================================================================

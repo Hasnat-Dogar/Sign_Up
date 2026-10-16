@@ -7,17 +7,21 @@ app = Flask(__name__)
 app.secret_key = "Ayc3grfo87_ybndi"
 app.debug = True
 
-# 🛠️ Safe helper function: Prevents Vercel from crashing if the DB is unlinked
+
 def get_db():
     try:
-        if not os.getenv("MYSQLHOST"):
-            print("⚠️ MYSQLHOST variable not found. Using local fallback values...")
+        host = os.environ.get('DB_HOST', 'localhost')
+        user = os.environ.get('DB_USER', 'root')
+        password = os.environ.get('DB_PASSWORD', '12345678')
+        database = os.environ.get('DB_NAME', 'Sign_Up')
+        port = int(os.environ.get('DB_PORT', 3306))
+
         return mysql.connector.connect(
-            host=os.getenv("MYSQLHOST", "localhost"),
-            user=os.getenv("MYSQLUSER", "root"),
-            password=os.getenv("MYSQLPASSWORD", "12345678"), 
-            database=os.getenv("MYSQLDATABASE", "Sign_Up"),
-            port=int(os.getenv("MYSQLPORT", 3306))
+            host="mysql-5c087bc-signify.c.aivencloud.com",
+            user="avnadmin",
+            password=12345678,
+            database="Sign_Up",
+            port=12070
         )
     except Exception as e:
         print(f"⚠️ Cloud Database Connection Failed: {e}")

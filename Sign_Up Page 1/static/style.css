@@ -26,10 +26,10 @@ body {
     /* background: url('Sign_Up Pagee 1/static/BMW\ pic.jpg') no-repeat center center fixed;
     background-size: cover;
     /* background-color: gray;
-    background-size: cover; */ */
+    background-size: cover; */ 
 
   /* background image from the same folder as style.css */
-  background-image: url("./BMW%20pic.jpg"); /* recommended: no spaces in filename */
+  background: url("./BMW%20pic.jpg"); /* recommended: no spaces in filename */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

@@ -172,6 +172,10 @@ def signup():
 
     return render_template("index.html")
 
+@app.route("/submit")
+def submit():
+    return render_template("submit.html")
+
 
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():

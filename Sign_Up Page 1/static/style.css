@@ -28,14 +28,13 @@ body {
     background-size: cover;
     /* background-color: gray;
     background-size: cover; */ */
-   body {
-  background-image: url("BMW pic.jpg"); /* spaces encoded as %20, or use "BMW pic.jpg" in quotes */
+   
+  background-image: url("BMW%20pic.jpg"); /* spaces encoded as %20, or use "BMW pic.jpg" in quotes */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed; /* optional: makes background fixed on scroll */
   background-color: #000; /* fallback while image loads */
-}
 }
 
 /* ==========================================================================

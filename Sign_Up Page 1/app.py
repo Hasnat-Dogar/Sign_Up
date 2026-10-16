@@ -10,18 +10,18 @@ app.debug = True
 
 def get_db():
     try:
-        host = os.environ.get('DB_HOST', 'localhost')
-        user = os.environ.get('DB_USER', 'root')
+        host = os.environ.get('DB_HOST', 'mysql-5c087bc-signify.c.aivencloud.com')
+        user = os.environ.get('DB_USER', 'avnadmin')
         password = os.environ.get('DB_PASSWORD', '12345678')
         database = os.environ.get('DB_NAME', 'Sign_Up')
-        port = int(os.environ.get('DB_PORT', 3306))
+        port = int(os.environ.get('DB_PORT', 12070))
 
         return mysql.connector.connect(
-            host="mysql-5c087bc-signify.c.aivencloud.com",
-            user="avnadmin",
-            password=12345678,
-            database="Sign_Up",
-            port=12070
+            host=host,
+            user=user,
+            password=password,
+            database=database,
+            port=port
         )
     except Exception as e:
         print(f"⚠️ Cloud Database Connection Failed: {e}")

@@ -34,7 +34,7 @@ body {
   background-position: center center;
   background-size: cover;
   background-attachment: fixed; /* optional: makes background fixed on scroll */
-  background-color: #000; /* fallback while image loads */
+  /* background-color: #000; /* fallback while image loads */ */
 }
 
 /* ==========================================================================

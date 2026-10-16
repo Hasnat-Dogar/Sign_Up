@@ -153,21 +153,19 @@ def signup():
                 (username, email, generate_password_hash(password))
             )
             conn.commit()
+
+            session["new_user"] = username
+            return redirect(url_for("submit"))
+    
         except mysql.connector.IntegrityError:
             flash("Username or email already exists.", "error")
             return redirect(url_for("signup"))
+        
         finally:
             cursor.close()
             conn.close()
 
-        session["new_user"] = username
-        return redirect(url_for("submit"))
-
     return render_template("index.html")
-
-@app.route("/submit")
-def submit():
-    return render_template("submit.html")
 
 
 @app.route("/sign_in", methods=["GET", "POST"])

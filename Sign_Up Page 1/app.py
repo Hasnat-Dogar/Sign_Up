@@ -16,12 +16,17 @@ def get_db():
         database = os.environ.get('DB_NAME', 'Sign_Up')
         port = int(os.environ.get('DB_PORT', 12070))
 
+        ssl_config = {}
+        if port != 12070:
+            ssl_config = {'ssl_mode': 'REQUIRED'}
+
         return mysql.connector.connect(
             host=host,
             user=user,
             password=password,
             database=database,
-            port=port
+            port=port,
+            **ssl_config
         )
     except Exception as e:
         print(f"⚠️ Cloud Database Connection Failed: {e}")

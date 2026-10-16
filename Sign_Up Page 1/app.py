@@ -12,7 +12,7 @@ def get_db():
     try:
         host = os.environ.get('DB_HOST', 'mysql-5c087bc-signify.c.aivencloud.com')
         user = os.environ.get('DB_USER', 'avnadmin')
-        password = os.environ.get('DB_PASSWORD', '12345678')
+        password = os.environ.get('DB_PASSWORD', 'AVNS_efsZvqZeJxZE6eLwAS3')
         database = os.environ.get('DB_NAME', 'Sign_Up')
         port = int(os.environ.get('DB_PORT', 12070))
 

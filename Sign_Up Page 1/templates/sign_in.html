@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign_in</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+</head>
+<body>
+    <header>
+      <!-- <h1>Signify</h1>
+      <div>  <a href="{{url_for('home')}}">Home</a> <a href="{{url_for('about')}}">About</a> <a href="{{url_for('contact')}}">Contact</a> <a href="/sign_in">Sign In</a> <a href="{{url_for('signup')}}">Sign Up</a> </div> -->
+
+      <h1>SIGNIFY</h1>
+
+    <input type="checkbox" id="menu-toggle" class="mobile-menu-toggle">
+    
+    <label for="menu-toggle" class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div>
+        <a href="{{url_for('home')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('contact')}}">Contact</a>
+        <a href="{{url_for('sign_in')}}">Sign In</a>
+        <a href="{{url_for('signup')}}">Sign Up</a>
+    </div>
+
+    </header>
+
+    <main>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{ category }}"
+        style="color: red; margin-bottom: 10px"
+      >
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+
+        <form action="/sign_in" method="POST">
+            <div> <h1> Sign In </h1> </div>
+            <div> <p> Enter your Details to Sign In! </p> </div>
+            <div>
+                <label for="user_name" >Email or User_name</label>
+                <input type="text" name="login" placeholder="Enter your Username or Email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+            </div>
+            <div> <button type="submit"> Sign In </button> </div>
+            <div> <label for="forgot_pass"> <a href="{{url_for('forgot_pass')}}">Forgot Password ?</a> </label> </div>
+            <div> <label for="signup"> <a href="{{url_for('signup')}}">Create New Account ?</a> </label> </div>
+        </form>
+    </main>
+    <footer>
+      <span>Copyright &copy; 2026 | All Rights reserved</span>
+      <br>
+      <span>Privacy Poicy &nbsp;</span>
+      <span>Terms of Service &nbsp;</span>
+      <span>Copyright &copy; Law</span>
+    </footer>
+</body>
+</html>

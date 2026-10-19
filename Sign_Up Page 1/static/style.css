@@ -24,10 +24,10 @@ body {
     /* ------------------------------------------------------------------
        🚀 BACKGROUND WAREHOUSE WALLPAPER HOUSING:
        ------------------------------------------------------------------ */
-    /* background: url('/static/BMW\ pic.jpg') no-repeat center center fixed;
-    background-size: cover; */
-    background-color: gray;
+    background: url('/static/BMW-pic.jpg') no-repeat center center fixed;
     background-size: cover;
+    /* background-color: gray;
+    background-size: cover; */
 }
 
 /* ==========================================================================

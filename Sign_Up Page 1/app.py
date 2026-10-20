@@ -88,8 +88,42 @@ def menu():
 
     # return render_template("otp.html")
 
-@app.route("/reset_pass")
+@app.route("/reset_pass",methods=["GET","POST"])
 def reset_pass():
+    if "reset_email" not in session:
+        flash("Please request an OTP first.", "error")
+        return redirect(url_for("forgot_pass"))
+
+    if request.method == "POST":
+        password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
+
+        if password == confirm_password:
+            conn = get_db()
+            cursor = conn.cursor()
+
+            new_pass = generate_password_hash(password)
+
+        try:
+            cursor.execute(
+                "Update Users Set pasword_hash = %s Where email = %s ",
+                (new_pass,"reset_email") )
+            conn.commit()
+            session.pop("otp_email")
+            flash("Passwords Changed Successfully")
+
+        except mysql.connector.Error:
+            flash("Please try again later","error")
+            return redirect(url_for("reset_pass"))
+
+        else:
+            flash("Enter the same Password","error")
+            return redirect(url_for("reset_pass"))
+
+        finally:
+            conn.close()
+            cursor.close()
+
     return render_template("reset_pass.html")
 
 

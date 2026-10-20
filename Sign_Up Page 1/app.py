@@ -111,6 +111,7 @@ def reset_pass():
             conn.commit()
             session.pop("otp_email")
             flash("Passwords Changed Successfully")
+            return redirect(url_for('sign_in'))
 
         except mysql.connector.Error:
             flash("Please try again later","error")

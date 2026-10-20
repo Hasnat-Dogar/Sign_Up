@@ -100,6 +100,9 @@ def reset_pass():
 
         if password == confirm_password:
             conn = get_db()
+            if get_db is None:
+                flash("Database Error","error")
+                return redirect(url_for('reset_pass'))
             cursor = conn.cursor()
 
             new_pass = generate_password_hash(password)

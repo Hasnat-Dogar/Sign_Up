@@ -8,8 +8,11 @@ from email.message import EmailMessage
 
 
 app = Flask(__name__)
-app.secret_key = "Ayc3grfo87_ybndi"
+app.secret_key = os.environ.get('app_secret_key')
 app.debug = True
+
+mail_pass = os.environ.get('mail_pass')
+from_mail = os.environ.get('from_mail')
 
 
 def get_db():
@@ -112,7 +115,6 @@ def reset_pass():
                     "Update Users Set Password_hash = %s Where email = %s ",
                     (new_pass,"reset_email") )
                 conn.commit()
-                session.pop("otp_email")
                 flash("Passwords Changed Successfully")
                 return redirect(url_for('sign_in'))
     

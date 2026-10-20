@@ -106,7 +106,7 @@ def reset_pass():
 
         try:
             cursor.execute(
-                "Update Users Set pasword_hash = %s Where email = %s ",
+                "Update Users Set Password_hash = %s Where email = %s ",
                 (new_pass,"reset_email") )
             conn.commit()
             session.pop("otp_email")

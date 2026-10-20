@@ -128,6 +128,7 @@ def reset_pass():
     return render_template("reset_pass.html")
 
 
+
 @app.route("/forgot_pass", methods=["GET", "POST"])
 def forgot_pass():
     if request.method == "POST":

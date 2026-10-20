@@ -104,26 +104,27 @@ def reset_pass():
 
             new_pass = generate_password_hash(password)
 
-        try:
-            cursor.execute(
-                "Update Users Set Password_hash = %s Where email = %s ",
-                (new_pass,"reset_email") )
-            conn.commit()
-            session.pop("otp_email")
-            flash("Passwords Changed Successfully")
-            return redirect(url_for('sign_in'))
-
-        except mysql.connector.Error:
-            flash("Please try again later","error")
-            return redirect(url_for("reset_pass"))
+            try:
+                cursor.execute(
+                    "Update Users Set Password_hash = %s Where email = %s ",
+                    (new_pass,"reset_email") )
+                conn.commit()
+                session.pop("otp_email")
+                flash("Passwords Changed Successfully")
+                return redirect(url_for('sign_in'))
+    
+            except mysql.connector.Error:
+                flash("Please try again later","error")
+                return redirect(url_for("reset_pass"))
+    
+            finally:
+                conn.close()
+                cursor.close()
 
         else:
             flash("Enter the same Password","error")
             return redirect(url_for("reset_pass"))
 
-        finally:
-            conn.close()
-            cursor.close()
 
     return render_template("reset_pass.html")
 

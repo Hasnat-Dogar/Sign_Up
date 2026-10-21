@@ -32,12 +32,12 @@
 
     <main>
 
-      <!-- Container to display flashed messages -->
+      <!-- Flashed Notification Container -->
       <div class="toast-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             {% for category, message in messages %}
-              <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">
+              <div class="toast-card {{ category }}">
                 {{ message }}
               </div>
             {% endfor %}

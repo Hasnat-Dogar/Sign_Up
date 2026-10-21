@@ -409,12 +409,12 @@ def sign_in():
 
             # 🛠️ FIXED: Access index [2] for the password hash string
             if user_input and check_password_hash(user_input[2], password):
-                flash("Logged in successfully!", "success")
+                flash("Logged In | You have logged in successfully!", "success")
                 session["user_login"] = user_input[0]
                 session["user_email"] = user_input[1]
                 return redirect(url_for("menu"))
             else:
-                flash("Invalid username or password.", "error")
+                flash("Invalid Cardentials | Invalid username or password.", "error")
                 return redirect(url_for("sign_in"))
         except mysql.connector.Error:
             flash("Please try again later", "error")

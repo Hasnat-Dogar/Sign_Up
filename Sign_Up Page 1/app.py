@@ -17,7 +17,7 @@ from_mail = os.environ.get('from_mail')
 
 def get_db():
     try:
-        host = os.environ.get('DB_HOST', 'mysql-5c087bc-signify.c.aivencloud.com')
+        host = os.environ.get('DB_HOST')
         user = os.environ.get('DB_USER', 'avnadmin')
         password = os.environ.get('DB_PASSWORD', 'AVNS_efsZvqZeJxZE6eLwAS3')
         database = os.environ.get('DB_NAME', 'Sign_Up')

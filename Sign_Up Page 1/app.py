@@ -110,7 +110,6 @@ def forgot_pass():
             if otp_email:
                 # 1. Generate the OTP
                 real_otp = str(random.randint(100000, 999999))
-                flash(f"Your OTP is {real_otp}")
                 # 2. Save email and OTP into Flask Session so the next function can read it
                 session["reset_email"] = email
                 session["generated_otp"] = real_otp

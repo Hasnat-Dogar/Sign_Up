@@ -32,15 +32,18 @@
 
     <main>
 
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div
-        class="alert alert-{{ category }}"
-        style="color: red; margin-bottom: 10px"
-      >
-        {{ message }}
+      <!-- Container to display flashed messages -->
+      <div class="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
       </div>
-      {% endfor %} {% endif %} {% endwith %}
 
       <form
         action="{{ url_for('signup') }}"

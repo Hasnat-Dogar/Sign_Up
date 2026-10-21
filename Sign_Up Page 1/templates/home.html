@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing-Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+  </head>
+
+  <body>
+    <header>
+      <!-- <h1>Signify</h1>
+      <div>  <a href="{{url_for('home')}}">Home</a> <a href="{{url_for('about')}}">About</a> <a href="{{url_for('contact')}}">Contact</a> <a href="{{url_for('sign_in')}}">Sign In</a> <a href="{{url_for('signup')}}">Sign Up</a> </div> -->
+<h1>SIGNIFY</h1>
+
+    <input type="checkbox" id="menu-toggle" class="mobile-menu-toggle">
+    
+    <label for="menu-toggle" class="hamburger-icon">
+    </label>
+
+    <div>
+        <a href="{{url_for('home')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('contact')}}">Contact</a>
+        <a href="{{url_for('sign_in')}}">Sign In</a>
+        <a href="{{url_for('signup')}}">Sign Up</a>
+    </div>
+
+    </header>
+
+    <main>
+
+<div class="toast-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {# Python-driven logic splits the title and subtitle using '|' #}
+        {% set parts = message.split('|') %}
+        
+        <div class="custom-toast {{ category }}">
+          <div class="toast-icon-box">
+            {% if category == 'success' %}
+              <span class="icon-success">✓</span>
+            {% else %}
+              <span class="icon-error">✕</span>
+            {% endif %}
+          </div>
+          
+          <div class="toast-text-group">
+            <div class="toast-title">{{ parts[0] }}</div>
+            <div class="toast-subtitle">{{ parts[1] }}</div>
+          </div>
+        </div>
+        
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+      <div>
+        <h1>Welcome!</h1>
+      </div>
+      <p>
+        Hello,
+        <br />
+        Welcome to my site.
+        <br />
+        This is the Landing-Page of my Sign_Up Project
+        <br />
+        Do you want to Sign Up?
+      </p>
+      <div class="button-container">
+        <a href="/signup"><button>Get Started</button></a>
+      </div>
+    </main>
+
+    <footer>
+      <span>Copyright &copy; 2026 | All Rights reserved</span>
+      <br>
+      <span>Privacy Poicy &nbsp;</span>
+      <span>Terms of Service &nbsp;</span>
+      <span>Copyright &copy; Law</span>
+    </footer>
+  </body>
+</html>
+ 

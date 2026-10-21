@@ -32,14 +32,31 @@
 
     <main>
 
-      <!-- Flashed Notification Container -->
+      <!-- Toast Notification Container (Positioned in Bottom-Right) -->
       <div class="toast-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             {% for category, message in messages %}
-              <div class="toast-card {{ category }}">
-                {{ message }}
+              {# Python-driven logic splits the title and subtitle using '|' #}
+              {% set parts = message.split('|') %}
+              
+              <div class="custom-toast {{ category }}">
+                <!-- Icon Box -->
+                <div class="toast-icon-box">
+                  {% if category == 'success' %}
+                    <span class="icon-success">✓</span>
+                  {% else %}
+                    <span class="icon-error">✕</span>
+                  {% endif %}
+                </div>
+                
+                <!-- Text Box -->
+                <div class="toast-text-group">
+                  <div class="toast-title">{{ parts[0] }}</div>
+                  <div class="toast-subtitle">{{ parts[1] }}</div>
+                </div>
               </div>
+              
             {% endfor %}
           {% endif %}
         {% endwith %}

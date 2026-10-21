@@ -503,3 +503,28 @@ footer a:hover {
   background-color: #1e1e1e;
   border-left: 5px solid #2ecc71;
 }
+
+.toast-card {
+  animation: slideIn 0.4s ease-out forwards, fadeOut 0.5s ease-in 4s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

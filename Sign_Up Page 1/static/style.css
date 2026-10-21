@@ -468,49 +468,93 @@ footer a:hover {
 
 
 
-/* Container positioned at the bottom right (inside the red marked area) */
+/* Positioned in the bottom-right corner over your background */
 .toast-container {
   position: fixed;
-  bottom: 60px;       /* Distance above footer */
-  right: 40px;        /* Distance from right edge */
-  z-index: 9999;      /* Ensures it sits on top of background images */
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* General style for the notification card */
-.toast-card {
-  min-width: 250px;
-  padding: 14px 20px;
-  border-radius: 8px;
-  color: #ffffff;
+/* Base Toast Card Design (Dark theme matching your sign-up box) */
+.custom-toast {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 340px;
+  padding: 16px 20px;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   font-family: sans-serif;
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Theme variations */
+.custom-toast.success {
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.custom-toast.error {
+  border: 1px solid rgba(255, 77, 77, 0.3);
+}
+
+/* Icon styling */
+.toast-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.custom-toast.success .toast-icon-box {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.custom-toast.error .toast-icon-box {
+  background-color: rgba(255, 77, 77, 0.2);
+  color: #ff4d4d;
+}
+
+/* Typography matching the reference images */
+.toast-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toast-title {
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  background-color: #222; /* Default background */
 }
 
-/* Style for Error messages (Red border/accent) */
-.toast-card.error {
-  background-color: #1e1e1e;
-  border-left: 5px solid #ff4d4d;
+.custom-toast.success .toast-title {
+  color: #2ecc71;
 }
 
-/* Style for Success messages (Green border/accent) */
-.toast-card.success {
-  background-color: #1e1e1e;
-  border-left: 5px solid #2ecc71;
+.custom-toast.error .toast-title {
+  color: #ff4d4d;
 }
 
-.toast-card {
-  animation: slideIn 0.4s ease-out forwards, fadeOut 0.5s ease-in 4s forwards;
+.toast-subtitle {
+  font-size: 12px;
+  color: #b0b0b0;
+  line-height: 1.4;
 }
 
+/* Smooth entry animation (Pure CSS) */
 @keyframes slideIn {
   from {
-    transform: translateY(20px);
+    transform: translateY(30px);
     opacity: 0;
   }
   to {
@@ -519,9 +563,40 @@ footer a:hover {
   }
 }
 
+/* Update your .custom-toast class to include the animation */
+.custom-toast {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 340px;
+  padding: 16px 20px;
+  background: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: sans-serif;
+  
+  /* Animation rule: 0.4s to slide in, wait 4.6s, then 0.5s to fade out */
+  animation: slideIn 0.4s ease-out forwards, fadeOut 0.5s ease-in 4.5s forwards;
+}
+
+/* 1. Slide In Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 2. Fade Out Animation */
 @keyframes fadeOut {
   from {
     opacity: 1;
+    visibility: visible;
   }
   to {
     opacity: 0;

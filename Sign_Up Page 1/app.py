@@ -407,6 +407,8 @@ def sign_in():
             )
             user_input = cursor.fetchone()
             return redirect(url_for("menu"))
+            session["user_login"] = user_input[0]
+            session["user_email"] = user_input[1]
 
             # if user_input and check_password_hash(user_input[2], password):
             #     flash("Logged in successfully!", "success")

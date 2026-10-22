@@ -1,5 +1,5 @@
--- create database Sign_Up;
--- Use Sign_Up;
+create database Sign_Up;
+Use Sign_Up;
 Create Table Users(
 Id int auto_increment primary key,
 user_name varchar(30) Unique Not Null,

@@ -197,7 +197,8 @@ def reset_pass():
                     "Update Users Set Password_hash = %s Where email = %s ",
                     (new_pass,"reset_email") )
                 conn.commit()
-                flash("Passwords Changed Successfully")
+                session.clear()
+                flash("Passwords Changed Successfully","success")
                 return redirect(url_for('sign_in'))
 
             except mysql.connector.Error:

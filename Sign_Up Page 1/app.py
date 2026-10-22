@@ -195,7 +195,7 @@ def reset_pass():
             try:
                 cursor.execute(
                     "Update Users Set Password_hash = %s Where email = %s ",
-                    (new_pass,"reset_email") )
+                    (new_pass,'reset_email') )
                 conn.commit()
                 session.clear()
                 flash("Passwords Changed Successfully","success")

@@ -290,9 +290,9 @@ def reset_pass():
 
 @app.route("/change_pass", methods=["GET","POST"])
 def change_pass():
-    if "user_login" not in session:
-        flash("Please log in first to change your password.", "error")
-        return redirect(url_for("sign_in"))
+    # if "user_login" not in session:
+    #     flash("Please log in first to change your password.", "error")
+    #     return redirect(url_for("sign_in"))
     
     if request.method == "POST":
         login = request.form["login"].strip()
@@ -408,7 +408,7 @@ def sign_in():
             user_input = cursor.fetchone()
             return redirect(url_for("menu"))
             session["user_login"] = user_input[0]
-            session["user_email"] = user_input[1]
+            # session["user_email"] = user_input[1]
 
             # if user_input and check_password_hash(user_input[2], password):
             #     flash("Logged in successfully!", "success")

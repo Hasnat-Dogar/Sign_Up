@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-Up Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+<!-- 1. Brython Core Engine (Yeh Python runtime load karta hai) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.13.2/brython.min.js"></script>
+
+<!-- 2. Brython Standard Library (Yeh Python ke internal elements ko handle karta hai) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.13.2/brython_stdlib.min.js"></script>
+
+  </head>
+
+  <body onload="brython()">
+    <header>
+
+<h1>SIGNIFY</h1>
+
+    <input type="checkbox" id="menu-toggle" class="mobile-menu-toggle">
+    
+    <label for="menu-toggle" class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div>
+        <a href="{{url_for('home')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('contact')}}">Contact</a>
+        <a href="{{url_for('sign_in')}}">Sign In</a>
+        <a href="{{url_for('signup')}}">Sign Up</a>
+    </div>
+
+    </header>
+
+    <main>
+
+<div class="toast-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {# Python-driven logic splits the title and subtitle using '|' #}
+        {% set parts = message.split('|') %}
+        
+        <div class="custom-toast {{ category }}">
+          <div class="toast-icon-box">
+            {% if category == 'success' %}
+              <span class="icon-success">✓</span>
+            {% else %}
+              <span class="icon-error">✕</span>
+            {% endif %}
+          </div>
+          
+          <div class="toast-text-group">
+            <div class="toast-title">{{ parts[0] }}</div>
+            <div class="toast-subtitle">{{ parts[1] }}</div>
+          </div>
+        </div>
+        
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+      <form
+        action="{{ url_for('signup') }}"
+        method="POST"
+        onsubmit="
+          if (password.value !== c_password.value) {
+            same_pass_error.style.display = 'block';
+            return false;
+          }
+        "
+      >
+        <div><h1>Sign Up</h1></div>
+        <div><p>Enter Your Details to Sign Up!</p></div>
+        <div>
+          <label for="user_name">User_Name</label>
+          <input
+            id="user_name"
+            name="user_name"
+            type="text"
+            pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z0-9_.$\-]{5,30}"
+            title="Must contains the Characters and Digits"
+            placeholder="Select User_Name"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            pattern=".+@gmail\.com"
+            title="Must contains the gmail format '@gmail.com'"
+            placeholder="Enter Your Email"
+            required
+          />
+        </div>
+
+        <!-- <div style="position: relative; width: 100%;">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Select a Strong Password"
+            required
+          >
+          <button type="button" id="toggle-button" style="position: absolute; right: 15px; top: 50%; height: 18px; width: auto; z-index: 10; pointer-events: none;">
+          <span style="height: 16px; width: auto;"> &#128274; </span>
+          </button>
+        </div> -->
+
+        <div style="position: relative; width: 100%;">
+        <div><label for="password">Password<p id="pass-label-limit"> (At least 8 characters)</p></label></div>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Select a Strong Password"
+          pattern="(?=.*[A-Z])(?=.*\d).{8,}"
+          title="Must contain at least one uppercase letter, one number, and be at least 8 characters long."
+          required
+          style="width: 100%; padding-right: 50px; box-sizing: border-box;"
+        >
+        <button type="button" id="password-toggle" style="position: absolute; outline: gold; box-shadow: gray; right: 15px; bottom: 12px; height: 18px; width: auto; z-index: 20; background: none; border: none; padding: 0; margin: 0; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+          <span id="password-icon" style="height: 16px; width: auto; line-height: 1; font-size: 16px;">&#128274;</span>
+        </button>
+      </div>
+
+        <div style="position: relative; width: 100%;">
+          <label for="c_password">Confirm Password</label>
+          <input
+            id="c_password"
+            name="confirm_password"
+            type="password"
+            placeholder="Confirm Your Password"
+            required
+            style="width: 100%; padding-right: 50px; box-sizing: border-box;"
+          >
+        <button type="button" id="confirm-toggle" style="position: absolute; outline: gold; box-shadow: gray; right: 15px; bottom: 12px; height: 18px; width: auto; z-index: 20; background: none; border: none; padding: 0; margin: 0; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+          <span id="confirm-icon" style="height: 16px; width: auto; line-height: 1; font-size: 16px;">&#128274;</span>
+        </button>
+        </div>
+
+        <ul id="password-requirements" style="list-style: none; padding: 0; margin: 8px 0 15px 0; font-size: 13px; color: #888; display: none; opacity: 0; transition: opacity 0.3s ease-in-out;">
+          <li id="req-length" style="margin-bottom: 4px; transition: color 0.3s ease;">✕ Minimum 8 characters</li>
+          <li id="req-number" style="margin-bottom: 4px; transition: color 0.3s ease;">✕ At least 1 number</li>
+          <li id="req-uppercase" style="margin-bottom: 4px; transition: color 0.3s ease;">✕ At least 1 uppercase letter</li>
+        </ul>
+
+
+        <div>
+          <span id="same_pass_error" style="display: none; color: #ff4d4d; font-size: 14px">
+            ⚠️ Enter the same Password!
+          </span>
+        </div>
+
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+        <div>
+          <label for="sign_in">
+            <a href="{{url_for('sign_in')}}"
+              ><h3>Already have an Account?</h3></a
+            >
+          </label>
+        </div>
+
+      </form>
+
+    </main>
+
+<script type="text/python" src="{{ url_for('static', filename='python/main_ui.py') }}"></script>
+
+    <footer>
+      <span>Copyright &copy; 2026 | All Rights reserved</span>
+      <br>
+      <span>Privacy Poicy &nbsp;</span>
+      <span>Terms of Service &nbsp;</span>
+      <span>Copyright &copy; Law</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign_in</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <!-- 1. Brython Core Engine (Yeh Python runtime load karta hai) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.13.2/brython.min.js"></script>
+
+<!-- 2. Brython Standard Library (Yeh Python ke internal elements ko handle karta hai) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.13.2/brython_stdlib.min.js"></script>
+
+</head>
+<body>
+    <header>
+      <!-- <h1>Signify</h1>
+      <div>  <a href="{{url_for('home')}}">Home</a> <a href="{{url_for('about')}}">About</a> <a href="{{url_for('contact')}}">Contact</a> <a href="/sign_in">Sign In</a> <a href="{{url_for('signup')}}">Sign Up</a> </div> -->
+
+      <h1>SIGNIFY</h1>
+
+    <input type="checkbox" id="menu-toggle" class="mobile-menu-toggle">
+    
+    <label for="menu-toggle" class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div>
+        <a href="{{url_for('home')}}">Home</a>
+        <a href="{{url_for('about')}}">About</a>
+        <a href="{{url_for('contact')}}">Contact</a>
+        <a href="{{url_for('sign_in')}}">Sign In</a>
+        <a href="{{url_for('signup')}}">Sign Up</a>
+    </div>
+
+    </header>
+
+    <main>
+      
+<div class="toast-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        {# Python-driven logic splits the title and subtitle using '|' #}
+        {% set parts = message.split('|') %}
+        
+        <div class="custom-toast {{ category }}">
+          <div class="toast-icon-box">
+            {% if category == 'success' %}
+              <span class="icon-success">✓</span>
+            {% else %}
+              <span class="icon-error">✕</span>
+            {% endif %}
+          </div>
+          
+          <div class="toast-text-group">
+            <div class="toast-title">{{ parts[0] }}</div>
+            <div class="toast-subtitle">{{ parts[1] }}</div>
+          </div>
+        </div>
+        
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+        <form action="/sign_in" method="POST">
+
+            <div> <h1> Sign In </h1> </div>
+
+            <div> <p> Enter your Details to Sign In! </p> </div>
+
+            <div>
+                <label for="user_name" >Email or User_name</label>
+                <input type="text" name="login" placeholder="Enter your Username or Email" required>
+            </div>
+
+            <div style="position: relative; width: 100%;">
+              <label for="login_password">Password</label>
+              <input 
+                id="login_password" 
+                name="login_password" 
+                type="password" 
+                placeholder="Select a Strong Password" 
+                required
+                style="width: 100%; padding-right: 50px; box-sizing: border-box;"
+              >
+              <button type="button" id="login-pass-toggle" style="position: absolute; right: 15px; bottom: 12px; height: 18px; width: auto; z-index: 20; background: none; border: none; padding: 0; margin: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; outline: gold; box-shadow: gray;">
+                <span id="login-pass-icon" style="height: 16px; width: auto; line-height: 1; font-size: 16px;">&#128274;</span>
+              </button>
+            </div>
+
+
+            <div> <button type="submit"> Sign In </button> </div>
+
+            <div> <label for="forgot_pass"> <a href="{{url_for('forgot_pass')}}">Forgot Password ?</a> </label> </div>
+
+            <div> <label for="signup"> <a href="{{url_for('signup')}}">Create New Account ?</a> </label> </div>
+
+        </form>
+    </main>
+
+<script type="text/python" src="{{ url_for('static', filename='python/main_ui.py') }}"></script>
+
+    <footer>
+      <span>Copyright &copy; 2026 | All Rights reserved</span>
+      <br>
+      <span>Privacy Poicy &nbsp;</span>
+      <span>Terms of Service &nbsp;</span>
+      <span>Copyright &copy; Law</span>
+    </footer>
+</body>
+</html>

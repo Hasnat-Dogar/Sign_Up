@@ -522,7 +522,3 @@ def signout():
 
 #     username = session["user_login"]
 #     return f"Welcome Back, {username}!"
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
